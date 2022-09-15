@@ -11,6 +11,45 @@
   </head>
 
   <body>
+    
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+          <a href="/"><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトロゴ"></a>
+        <!-- エリア検索 -->
+        <!-- キーワード検索 -->
+        <!-- ユーザー名 -->
+        <!-- ログイン -->
+        <!-- ユーザー登録 -->
+        <!-- メニュー -->
+          <!-- リンク「予約済みルーム一覧」=> reservations_path -->
+          <!-- リンク「登録済みルーム一覧」=> rooms_path -->
+          <!-- リンク「設定」=> account_user_path(@:id)? -->
+        </div>
+        <div class="header-right-nav">
+          <% if user_signed_in? %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary my-2 mx-3" %>
+            <%= link_to "登録する", new_user_registration_path, class: "btn btn-secondary" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="notifications">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
     <%= yield %>
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>
