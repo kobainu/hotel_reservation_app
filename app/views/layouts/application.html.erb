@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!-- <link rel="stylesheet" href="../../assets/stylesheets/destyle.css"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="/assets/application-a8ca4c276281a74646e94609ae4a0eee0a7918869ecc82a06fbbc9997e6fc3b5.css" data-turbolinks-track="reload">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> -->
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,26 +19,66 @@
     
     <header class="header">
       <div class="header-inner">
+
         <div class="header-left-nav">
           <a href="/"><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトロゴ"></a>
-        <!-- エリア検索 -->
-        <!-- キーワード検索 -->
-        <!-- ユーザー名 -->
-        <!-- ログイン -->
-        <!-- ユーザー登録 -->
-        <!-- メニュー -->
-          <!-- リンク「予約済みルーム一覧」=> reservations_path -->
-          <!-- リンク「登録済みルーム一覧」=> rooms_path -->
-          <!-- リンク「設定」=> account_user_path(@:id)? -->
+          <form class="test">
+            <div class="header-sharch d-lg-inline-block d-none">
+              
+              <%= form_tag("/", :method =>'get') do %>
+              <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"エリア" %> 
+              <!-- <%= submit_tag '',class:"d-none" %> -->
+              <% end %>
+            </div>
+            <div class="header-sharch d-lg-inline-block d-none">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <%= form_tag("/", :method =>'get') do %>
+              <%= text_field_tag :keyword, params[:keyword], class: "form-control", placeholder:"キーワード" %>  
+              <!-- <%= submit_tag '',class:"d-none" %> -->
+              <% end %>
+            </div>
+          </form>
         </div>
+
         <div class="header-right-nav">
-          <% if user_signed_in? %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <% else %>
+          <div class="nav-item ">
+            <% if user_signed_in? %>
+            <div class="nav-item d-sm-inline-block d-none"><%= current_user.name %></div>
+            <div class="nav-item">
+              <img src="" alt="メニュー" class="mx-3 p-1 host-icon nav-trigger">
+              <ul class="header-nav-menu">
+                <li>
+                  <%= link_to "ルーム登録", rooms_new_path %>
+                </li>
+                <li>
+                  <a href="">予約済みルーム一覧</a>
+                </li>
+                <li>
+                  <%= link_to "登録済みルーム一覧", rooms_posts_path %>
+                </li>
+                <li>
+                  <%= link_to "設定", users_account_path %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+              <script>
+                'use strict';
+                {
+                  document.querySelector('.nav-trigger').addEventListener('click', ()=> {
+                    document.querySelector('.header-nav-menu').classList.toggle('on');
+                  });
+                }
+              </script>
+            </div>
+            <% else %>
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary my-2 mx-3" %>
             <%= link_to "登録する", new_user_registration_path, class: "btn btn-secondary" %>
-          <% end %>
+            <% end %>
+          </div>
         </div>
+
       </div>
     </header>
 
