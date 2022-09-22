@@ -510,3 +510,102 @@ div.field, div.actions {
   padding: 4px;
   margin: 0 5px;
 }
+
+// アカウント画面
+.user {
+  width: 100%;
+}
+
+.user .user-nav {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 15px;
+}
+
+.user-nav > ul {
+  margin-bottom: 16px;
+  padding-left: 40px;
+}
+
+.user .user-nav-pc {
+  height: 100vh;
+}
+
+.user .user-nav-mobile {
+  height: auto;
+}
+
+.user .user-nav li {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.user .user-nav-pc .active {
+  border-right: 3px solid #4a90e2;
+}
+
+.user .user-nav-pc .active a {
+  color: #4a90e2;
+}
+
+.user .user-view {
+  background-color: #F6F8F9;
+  border-left: 2px solid #e2e2e2;
+}
+
+.user .user-view-box {
+  max-width: 880px;
+  background-color: #fff;
+  border: 1px solid #eaedef;
+  margin: 30px auto;
+}
+
+.user .update-content {
+  border-bottom: 1px solid #eaedef;
+  padding: 20px;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.h5, h5 {
+  font-size: 1.25rem;
+}
+
+.user .update-content label {
+  font-weight: bold;
+}
+
+
+@media (min-width: 992px){
+  .col-lg-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .d-lg-block {
+    display: block!important;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .col-md-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-md-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+}

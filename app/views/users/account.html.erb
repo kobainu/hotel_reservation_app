@@ -1,5 +1,41 @@
-<h5>アカウント</h5>
-<p>メールアドレス</p>
-<p>パスワード</p>
-<%= link_to "編集", edit_user_registration_path %>
-<%= link_to "プロフィール", users_profile_path %>
+<div class="container-fuild user">
+  <div class="row">
+    <div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+      <ul>
+        <li class="active">
+          <%= link_to "アカウント", users_account_path %>
+        </li>
+        <li class="">
+          <%= link_to "プロフィール", users_profile_path %>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="col-lg-2 user-nav user-nav-mobile d-lg-none"></div> -->
+    <div class="col-md-10 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <h5>アカウント</h5>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3" for="email">メールアドレス</label>
+            <div class="col-md-9"><%= current_user.email %></div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3" for="password">パスワード</label>
+            <div class="col-md-9">**********</div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <%= link_to "編集", edit_user_registration_path, class: "col-md-2 btn btn-primary mx-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
