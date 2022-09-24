@@ -1,6 +1,73 @@
-<h1>プロフィール</h1>
-<p>アイコン画像</p>
-<p>名前</p>
-<p>自己紹介</p>
-<button>更新</button>
-<%= link_to "アカウント", users_account_path %>
+<div class="container-fuild user">
+  <div class="row">
+    
+    <div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+      <ul>
+        <li class="">
+          <%= link_to "アカウント", users_account_path %>
+        </li>
+        <li class="active">
+          <%= link_to "プロフィール", users_profile_path %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <h5>プロフィール</h5>
+          </div>
+        </div>
+
+        <%= form_with url: users_profile_path, :multipart => true do |f| %>
+
+          <div class="update-content">
+            <div class="row">
+                <div class="col-md-6 offset-md-3" %>
+                    <div class="icon-box">
+
+                        <% if @user.profile_image %>
+                          <%= image_tag "/assets/images/user_images/#{@user.profile_image}", alt: "プロフィール画像", class: "icon-image host-icon" %>
+                        <% else %>
+                          <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt='アイコン画像' class="icon-image host-icon">
+                        <% end %>  
+
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :profile_image, "アイコン画像", class:"col-md-3 required-a" %>
+              <%= f.file_field :profile_image, class:"mb-4 col-md-9" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+                <%= f.label :name,"名前", class:"col-md-3 required-a" %>
+                <%= f.text_field :name, value: @user.name, placeholder:"名前を入力", class:"form-control col-md-9 mb-4" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+                <%= f.label :profile,"自己紹介",class:"col-md-3 required-a" %>
+                <%= f.text_area :profile, value: @user.profile, rows:"5", placeholder:"自己紹介を入力", class:"form-control mb-4 col-md-9" %>
+            </div>
+          </div>
+          
+          <div class="update-content">
+            <div class="row">
+              <%= f.submit "更新", class: "col-md-2 btn btn-primary mx-3" %>
+            </div>
+          </div>
+        
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

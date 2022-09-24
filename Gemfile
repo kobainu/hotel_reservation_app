@@ -60,3 +60,7 @@ gem 'devise'
 gem 'rails-i18n'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'pry-rails'
+
+gem 'carrierwave'

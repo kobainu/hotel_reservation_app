@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # ユーザーページにアクセス前に実行
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  
   private
 
   # サインアップ時にnameを許可する
