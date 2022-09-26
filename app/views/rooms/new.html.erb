@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <%= form_with url: rooms_new_path, :multipart => true do |f| %>
+        <%= form_with url: rooms_path, :multipart => true do |f| %>
 
           <div class="update-content">
             <div class="row">
@@ -53,6 +53,8 @@
               <%= f.file_field :image, class:"mb-4 col-md-9" %>
             </div>
           </div>
+
+          <%= f.hidden_field :user_id, value: @user.id %>
           
           <div class="update-content">
             <div class="row">

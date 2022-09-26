@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_26_045803) do
+ActiveRecord::Schema.define(version: 2022_09_26_052701) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer "user_id"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2022_09_26_045803) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "profile"
-    t.string "profile_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"

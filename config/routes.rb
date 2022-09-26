@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get 'users/profile', to: 'users#profile'
   post 'users/profile', to: 'users#update'
 
-  get 'rooms/index'
-  get 'rooms/new'
-  get 'rooms/show'
-  get 'rooms/posts'
+  get 'rooms/posts', to: 'rooms#posts'
+  resources :rooms
 end
