@@ -183,6 +183,12 @@ button, input {
   float: right;
 }
 
+.header .nav-item {
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+}
+
 .header-sharch {
   position: relative;
 }
@@ -202,6 +208,10 @@ button, input {
 
 .host-icon {
   cursor: pointer;
+}
+
+.p-1 {
+  padding: 0.25rem!important;
 }
 
 .header-nav-menu {

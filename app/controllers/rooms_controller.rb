@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
 
   # ルーム新規登録
   def new
+    @room = Room.new
   end
 
   # ルーム詳細

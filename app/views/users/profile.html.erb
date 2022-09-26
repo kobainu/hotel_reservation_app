@@ -27,8 +27,8 @@
                 <div class="col-md-6 offset-md-3" %>
                     <div class="icon-box">
 
-                        <% if @user.profile_image %>
-                          <%= image_tag "/assets/images/user_images/#{@user.profile_image}", alt: "プロフィール画像", class: "icon-image host-icon" %>
+                        <% if @user.image %>
+                          <%= image_tag @user.image.url, alt: "プロフィール画像", class: "icon-image host-icon" %>
                         <% else %>
                           <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt='アイコン画像' class="icon-image host-icon">
                         <% end %>  
@@ -40,8 +40,8 @@
 
           <div class="update-content">
             <div class="row">
-              <%= f.label :profile_image, "アイコン画像", class:"col-md-3 required-a" %>
-              <%= f.file_field :profile_image, class:"mb-4 col-md-9" %>
+              <%= f.label :image, "アイコン画像", class:"col-md-3 required-a" %>
+              <%= f.file_field :image, class:"mb-4 col-md-9" %>
             </div>
           </div>
 
