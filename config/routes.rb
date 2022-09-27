@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get 'rooms/posts', to: 'rooms#posts'
   resources :rooms
+  resources :reservations
+
 end

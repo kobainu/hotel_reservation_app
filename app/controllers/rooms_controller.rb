@@ -30,13 +30,19 @@ class RoomsController < ApplicationController
 
   # ルーム詳細画面
   def show
+    @user = User.find(params[:id])
     @room = Room.find(params[:id])
+    @reservation = Reservation.new(reservation_params)
   end
 
   private
 
     def room_params
       params.permit(:image, :name, :introduction, :price, :address, :user_id)
+    end
+
+    def reservation_params
+      params.permit(:image, :name, :introduction, :total_price, :start_date, :end_date, :room_id, :num_person, :day_price)
     end
 
 end

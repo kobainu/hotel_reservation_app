@@ -1,0 +1,14 @@
+<h4>予約ルーム一覧</h4>
+
+<%= @reservations.each do |reservation| %>
+
+  <%= image_tag reservation.image.url, alt: "ルーム画像" %>
+
+  <%= reservation.name %>
+  <%= reservation.introduction %>
+  <%= reservation.total_price %>
+  <%= reservation.start_date %>
+  <%= reservation.end_date %>
+  <%= reservation.created_at %>
+
+<%= end %>
