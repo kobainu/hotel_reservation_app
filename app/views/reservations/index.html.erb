@@ -1,14 +1,49 @@
-<h4>予約ルーム一覧</h4>
+<div class="conainer-fiuld reservations">
+  <h4 class="pb-4">予約済みルーム一覧</h4>
 
-<%= @reservations.each do |reservation| %>
+  
+  <table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>予約確定日時</th>
+      </tr>
+    </thead>
+    
+    <% @reservations.each do |reservation| %>
+    
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to image_tag(Room.find(reservation.room_id).image.url, alt: "ルーム画像", class: "room-posts-image"), room_path(Room.find(reservation.room_id).id) %>
+        </td>
+        <td class="posts-name">
+          <%= link_to Room.find(reservation.room_id).name, room_path(Room.find(reservation.room_id).id) %>
+        </td>
+        <td class="posts-content">
+          <%= Room.find(reservation.room_id).introduction %>
+        </td>
+        <td class="price-icon">
+          <%= reservation.total_price %>
+        </td>
+        <td>
+          <%= reservation.start_date.strftime("%Y-%m-%d") %>
+        </td>
+        <td>
+          <%= reservation.end_date.strftime("%Y-%m-%d") %>
+        </td>
+        <td>
+          <%= reservation.created_at %>
+        </td>
+      </tr>
+    </tbody>
 
-  <%= image_tag reservation.image.url, alt: "ルーム画像" %>
+    <% end %>
 
-  <%= reservation.name %>
-  <%= reservation.introduction %>
-  <%= reservation.total_price %>
-  <%= reservation.start_date %>
-  <%= reservation.end_date %>
-  <%= reservation.created_at %>
-
-<%= end %>
+  </table>
+</div>
