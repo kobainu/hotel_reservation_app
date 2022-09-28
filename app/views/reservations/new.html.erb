@@ -19,7 +19,7 @@
             <h6 class="reservations-new-check-content">人数：<%= @reservation.num_person %>人</h6>
 
             <%= f.label :total_price, "合計金額" %>
-            <%= f.text_field :total_price, value: @reservation.total_price, readonly: true, class: "form-control mb-4" %>
+            <%= f.text_field :total_price, value: "¥ #{@reservation.total_price}", readonly: true, class: "form-control mb-4" %>
 
             <%= f.hidden_field :room_id, value: @room.id %>
             <% start_date = @reservation.start_date %>

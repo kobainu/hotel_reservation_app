@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
+
   # 検索結果一覧画面
   def search
-
+    @results = @q.result
+    @q = Room.ransack
   end
 
   # 登録済みルーム一覧画面

@@ -16,13 +16,14 @@ class ReservationsController < ApplicationController
     @reservation_days = (end_date - start_date).to_i / 86400
     # 合計金額
     @reservation.total_price = @room.price * @reservation.num_person * @reservation_days
-    # binding.pry
   end
   
   # 予約確定処理
   def create
     @room = Room.find_by(id: params[:room_id])
+    # binding.pry
     @reservation = Reservation.create(reservation_params)
+    flash[:notice] = "予約が完了しました"
     redirect_to reservation_path(@reservation.id)
   end
   
@@ -35,7 +36,7 @@ class ReservationsController < ApplicationController
   private
 
     def reservation_params
-      params.permit(:image, :name, :introduction, :total_price, :start_date, :end_date, :room_id, :num_person)
+      params.permit(:total_price, :start_date, :end_date, :room_id, :num_person)
     end
 
 end

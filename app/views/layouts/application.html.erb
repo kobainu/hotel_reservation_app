@@ -22,22 +22,22 @@
 
         <div class="header-left-nav">
           <a href="/"><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトロゴ"></a>
-          <form class="test">
-            <div class="header-sharch d-lg-inline-block d-none">
-              
-              <%= form_tag("/", :method =>'get') do %>
-              <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"エリア" %> 
-              <!-- <%= submit_tag '',class:"d-none" %> -->
-              <% end %>
-            </div>
-            <div class="header-sharch d-lg-inline-block d-none">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <%= form_tag("/", :method =>'get') do %>
-              <%= text_field_tag :keyword, params[:keyword], class: "form-control", placeholder:"キーワード" %>  
-              <!-- <%= submit_tag '',class:"d-none" %> -->
-              <% end %>
-            </div>
-          </form>
+          <div class="header-sharch d-lg-inline-block d-none">
+            
+            <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.search_field :address_cont, id: "search_area", class: "form-control", placeholder: "エリア" %>
+            <% f.submit '探す', class: "form-control btn-primary mb-4" %>
+            <% end %>
+
+          </div>
+          <div class="header-sharch d-lg-inline-block d-none">
+
+            <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.search_field :name_or_address_or_introduction_cont, id: "search_area", class: "form-control", placeholder: "キーワード" %>
+            <% f.submit '探す', class: "form-control btn-primary mb-4" %>
+            <% end %>
+
+          </div>
         </div>
 
         <div class="header-right-nav">
@@ -45,10 +45,10 @@
             <% if user_signed_in? %>
             <div class="nav-item d-sm-inline-block d-none"><%= current_user.name %></div>
             <div class="nav-item">
-              <% if current_user.image %>
-                <%= image_tag current_user.image.url, alt: "メニュー", class: "mx-3 p-1 host-icon nav-trigger" %>
-              <% else %>
+              <% if current_user.image.blank? %>
                 <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt='メニュー' class="mx-3 p-1 host-icon nav-trigger">
+              <% else %>
+                <%= image_tag current_user.image.url, alt: "メニュー", class: "mx-3 p-1 host-icon nav-trigger" %>
               <% end %>  
               <!-- <img src="" alt="メニュー" class="mx-3 p-1 host-icon nav-trigger"> -->
               <ul class="header-nav-menu">

@@ -5,7 +5,11 @@
       <%= image_tag @room.image.url, alt: "ルーム画像", class: "room-show-image" %>
       <div class="room-show-detile">
         <div class="room-show-detile-icon">
-          <%= link_to image_tag(@user.image.url, alt: "ユーザー画像", class: "icon-image host-icon"), root_path %>
+          <% if @user.image.blank? %>
+            <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "ユーザー画像", class: "icon-image host-icon"), root_path %>
+          <% else %>
+            <%= link_to image_tag(@user.image.url, alt: "ユーザー画像", class: "icon-image host-icon"), root_path %>
+          <% end %>  
         </div>
         <div class="room-show-profile">
           <p class="room-show-profile-name">

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   post 'users/profile', to: 'users#update'
 
   get 'rooms/posts', to: 'rooms#posts'
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
   resources :reservations
 
 end
