@@ -12,25 +12,26 @@
     </thead>
 
     <% @rooms.each do |room| %>
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to image_tag(room.image.url, alt: "ルーム画像", class: "room-posts-image"), room_path(room.id) %>
-        </td>
-        <td class="posts-name">
-          <%= link_to room.name, room_path(room.id) %>
-        </td>
-        <td class="posts-content">
-          <%= room.introduction %>
-        </td>
-        <td class="price-icon">
-          <%= room.price %>
-        </td>
-        <td>
-          <%= room.created_at %>
-        </td>
-      </tr>
-    </tbody>
-    <% end %>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to image_tag(room.image.url, alt: "ルーム画像", class: "room-posts-image"), room_path(room.id) %>
+          </td>
+          <td class="posts-name">
+            <%= link_to room.name, room_path(room.id) %>
+          </td>
+          <td class="posts-content">
+            <%= room.introduction %>
+          </td>
+          <td class="price-icon">
+            <%= room.price %>
+          </td>
+          <td>
+            <%= room.created_at %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+
   </table>
 </div>

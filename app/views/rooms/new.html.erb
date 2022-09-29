@@ -1,16 +1,24 @@
-<div class="container-fuild user">
+<div class="container-fuild room-new">
   <div class="row">
     
-    <div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+    <div class="col-lg-2 room-nav room-nav-pc d-lg-block d-none">
       <ul>
         <li class="active">
-          <%= link_to "基本情報", users_account_path %>
+          <%= link_to "基本情報", new_room_path %>
         </li>
       </ul>
     </div>
 
-    <div class="col-md-10 user-view">
-      <div class="user-view-box">
+    <div class="col-lg-2 room-nav room-nav-mobile d-lg-none">
+      <ul>
+        <li class="active">
+          <%= link_to "基本情報", new_room_path %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-10 room-view">
+      <div class="room-view-box">
         <div class="update-content">
           <div class="row">
             <h5>ルーム情報登録</h5>
@@ -18,39 +26,38 @@
         </div>
 
         <%= form_with url: rooms_path, :multipart => true do |f| %>
-
           <div class="update-content">
             <div class="row">
                 <%= f.label :name,"ルーム名", class:"col-md-3 required-a" %>
-                <%= f.text_field :name, value: @room.name, placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4" %>
+                <%= f.text_field :name, value: @room.name, required: true, placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4" %>
             </div>
           </div>
 
           <div class="update-content">
             <div class="row">
                 <%= f.label :introduction,"ルーム紹介",class:"col-md-3 required-a" %>
-                <%= f.text_area :introduction, value: @room.introduction, rows:"5", placeholder:"ルーム説明を入力", class:"form-control mb-4 col-md-9" %>
+                <%= f.text_area :introduction, value: @room.introduction, rows:"5", required: true, placeholder:"ルーム説明を入力", class:"form-control mb-4 col-md-9" %>
             </div>
           </div>
           
           <div class="update-content">
             <div class="row">
               <%= f.label :price,"料金",class:"col-md-3 required-a" %>
-              <%= f.number_field :price, value: @room.price, rows:"5", placeholder:"1日あたりの料金を入力", class:"form-control mb-4 col-md-9" %>
+              <%= f.number_field :price, value: @room.price, rows:"5", required: true, min: 1, placeholder:"1日あたりの料金を入力", class:"form-control mb-4 col-md-9" %>
             </div>
           </div>
 
           <div class="update-content">
             <div class="row">
                 <%= f.label :address,"住所",class:"col-md-3 required-a" %>
-                <%= f.text_field :address, value: @room.address, rows:"5", placeholder:"住所を入力", class:"form-control mb-4 col-md-9" %>
+                <%= f.text_field :address, value: @room.address, rows:"5", required: true, placeholder:"住所を入力", class:"form-control mb-4 col-md-9" %>
             </div>
           </div>
 
           <div class="update-content">
             <div class="row">
               <%= f.label :image, "ルーム画像", class:"col-md-3 required-a" %>
-              <%= f.file_field :image, class:"mb-4 col-md-9" %>
+              <%= f.file_field :image, required: true, class:"mb-4 col-md-9" %>
             </div>
           </div>
 
@@ -61,8 +68,8 @@
               <%= f.submit "登録", class: "col-md-2 btn btn-primary mx-3" %>
             </div>
           </div>
-        
         <% end %>
+        
       </div>
     </div>
 

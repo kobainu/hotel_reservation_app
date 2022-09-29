@@ -62,15 +62,10 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.37.1)
@@ -101,8 +96,9 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.11.0)
-    execjs (2.8.1)
     ffi (1.15.5)
+    font-awesome-sass (6.1.2)
+      sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -193,11 +189,6 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -260,11 +251,11 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-  bootstrap-sass (~> 3.3.6)
   byebug
   capybara (>= 3.26)
   carrierwave
   devise
+  font-awesome-sass (~> 6.1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mini_magick

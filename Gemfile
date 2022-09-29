@@ -59,7 +59,7 @@ gem 'devise'
 
 gem 'rails-i18n'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem "font-awesome-sass", "~> 6.1.2"
 
 gem 'pry-rails'
 

@@ -1,5 +1,6 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
 
 /*リセットCSS*/
 
@@ -87,11 +88,6 @@ abbr[title], dfn[title] {
   cursor:help;
 }
 
-table {
-  border-collapse:collapse;
-  border-spacing:0;
-}
-
 /* change border colour to suit your needs */
 hr {
   display:block;
@@ -106,7 +102,8 @@ input, select {
   vertical-align:middle;
 }
 
-// common -------------------------------------------------------------------
+// 共通 --------------------------------------------------------------------------------------------------------------------------------------------
+
 * {
   box-sizing: border-box;
 }
@@ -124,6 +121,10 @@ body {
   min-height: 100vh;
   padding-bottom: 180px;
   box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 div {
@@ -146,7 +147,15 @@ ul {
 a,
 a:hover {
   text-decoration: none;
+}
+
+a p {
   color: #000;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
 }
 
 label {
@@ -155,7 +164,8 @@ label {
   cursor: default;
 }
 
-button, input {
+button, 
+input {
   overflow: visible;
 }
 
@@ -165,41 +175,72 @@ button, input {
   line-height: 1.2;
 }
 
+.h2, 
+h2 {
+  font-size: 2rem;
+}
+
+.h4,
+h4 {
+  font-size: 1.5rem;
+}
+
+.h5, 
+h5 {
+  font-size: 1.25rem;
+}
+
+.h6, 
+h6 {
+  font-size: 1rem;
+}
+
+// ヘッダー ・フッター-----------------------------------------------------------------------------------------------------------------------------------------
+
 .header {
   width: 100%;
   height: 70px;
   padding: 4px 30px;
   background-color: #000;
+  .nav-item {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+  }
 }
 
 .header-left-nav {
   float: left;
-}
-
-.header-left-nav form {
-  display: inline-block;
-}
-
-.header-right-nav {
-  float: right;
-}
-
-.header .nav-item {
-  display: inline-block;
-  color: #fff;
-  font-size: 14px;
+  form {
+    display: inline-block;
+  }
+  .form-control {
+    width: 180px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    padding-left: 30px;
+  }
 }
 
 .header-sharch {
   position: relative;
 }
 
-.header-left-nav .form-control {
-  width: 180px;
-  display: inline-block;
-  position: relative;
-  border-radius: 2px;
-  padding-left: 30px;
+.fas, .fa-solid {
+  position: absolute;
+  font-weight: 900;
+  width: 18px;
+  height: 18px;
+  left: 10px;
+  bottom: 2px;
+}
+
+.header-right-nav {
+  float: right;
+  form {
+    display: inline-block;
+  }
 }
 
 .location-dot::before {
@@ -220,28 +261,83 @@ button, input {
   right: 10px;
   padding: 15px;
   z-index: 1000;
-}
-
-.header-nav-menu li {
-  line-height: 30px;
-  font-size: 16px;
-  padding: 3px 5px;
-  a:hover {
-    color: #000;
-    text-decoration: none;
+  li {
+    line-height: 30px;
+    font-size: 16px;
+    padding: 3px 5px;
+    a, 
+    a:hover {
+      color: #000;
+      text-decoration: none;
+    }
   }
 }
+
 .on {
   display: block;
 }
 
-// home ------------------------------------------------------------------------------------------
-
-.top .top-main {
-  background-image: url(https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg);
-  background-size: cover;
+.footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 650px;
+  height: 180px;
+  margin-top: 64px;
+  padding-top: 90px;
+  background-color: #111;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+}
+
+// ホーム画面 ----------------------------------------------------------------------------------------------------------------------------------------
+
+.top {
+  .top-main {
+    background-image: url(https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+  }
+  .form-fream {
+    height: 650px;
+    display: flex;
+    align-items: center;
+  }
+  .form-area {
+    background: #fff;
+    padding: 24px;
+    border-radius: 5px;
+  }
+  .form-area-title {
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 1px;
+  }
+  .section-title {
+    font-size: 24px;
+    margin: 35px 0;
+    font-weight: bold;
+  }
+  span {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+    z-index: 1;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+  }
+  .panel-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
 }
 
 .container {
@@ -259,40 +355,17 @@ button, input {
   margin-left: -15px;
 }
 
-.top .form-fream {
-  height: 650px;
-  display: flex;
-  align-items: center;
-}
-
-.top .form-area {
-  background: #fff;
-  padding: 24px;
-  border-radius: 5px;
-}
-
-.top .form-area-title {
-  font-size: 28px;
-  line-height: 33px;
-  letter-spacing: 1px;
-}
-
 .form-area-label {
   font-size: 13px;
 }
 
-.mb-4, .my-4 {
+.mb-4, 
+.my-4 {
   margin-bottom: 1.5rem!important;
 }
 
 .m-5 {
   margin: 3rem!important;
-}
-
-.top .section-title {
-  font-size: 24px;
-  margin: 35px 0;
-  font-weight: bold;
 }
 
 .form-control {
@@ -309,56 +382,6 @@ button, input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.col-6 {
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-
-.col-lg-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-
-.top span {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  right: 0;
-  color: #fff;
-  font-weight: bold;
-  z-index: 1;
-  margin: auto;
-  text-align: center;
-  font-size: 24px;
-}
-
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-
-.top .panel-image {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 25px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 180px;
-  margin-top: 64px;
-  padding-top: 90px;
-  background-color: #111;
-  box-sizing: border-box;
-  color: #fff;
-  text-align: center;
 }
 
 .btn {
@@ -380,34 +403,48 @@ img {
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.btn-primary, .btn-primary:visited {
+.btn-primary, 
+.btn-primary:visited {
   color: #fff;
   background-color: #007bff;
   background-color: #4a90e2 !important;
   border-color: #007bff;
 }
 
-.mb-2, .my-2 {
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+  cursor: pointer;
+}
+
+.mb-2, 
+.my-2 {
   margin-bottom: 0.5rem!important;
 }
 
-.mt-2, .my-2 {
+.mt-2, 
+.my-2 {
   margin-top: 0.5rem!important;
 }
 
-.ml-3, .mx-3 {
+.ml-3, 
+.mx-3 {
   margin-left: 1rem!important;
 }
 
-.mr-3, .mx-3 {
+.mr-3, 
+.mx-3 {
   margin-right: 1rem!important;
 }
 
-.mb-4, .my-4 {
+.mb-4, 
+.my-4 {
   margin-bottom: 1.5rem!important;
 }
 
-.mt-4, .my-4 {
+.mt-4, 
+.my-4 {
   margin-top: 1.5rem!important;
 }
 
@@ -417,14 +454,19 @@ img {
   border-color: #6c757d;
 }
 
-.notifications .notice {
-  background-color: lightBlue;
-  margin: 0;
-}
-
 .notifications {
   color: #fff;
   text-align: center;
+  .notice {
+    background-color: #20b12fa8;
+    margin: 0;
+    padding: 10px;
+  }
+  .alert {
+    background-color: #F35500;
+    margin: 0;
+    padding: 10px;
+  }
 }
 
 .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
@@ -434,29 +476,17 @@ img {
   padding-left: 15px;
 }
 
-
-@media screen and (min-width: 992px){
-  .d-lg-inline-block {
-    display: inline-block!important;
-  }
-  
-  .col-lg-3 {
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-  
-  .col-lg-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
-// アカウント新規登録画面 ----------------------------------------------------------
+// デバイス関連 ----------------------------------------------------------------------------------------------------------------------------
 
 .device {
   padding-top: 36px;
   font-size: 16px;
+  p {
+    font-size: 16px;
+  }
+  a {
+    color: #007bff !important;
+  }
 }
 
 .device_frame {
@@ -466,16 +496,7 @@ img {
   margin: 0px auto;
   background-color: white;
   border-radius: 4px;
-  border: 1px solid gray;
-  // box-shadow: rgb(21 27 38 / 15%) 0px 1px 3px 0px;
-}
-
-.device p {
-  font-size: 16px;
-}
-
-.device a {
-  color: #007bff !important;
+  border: 1px solid rgb(220, 220, 220);
 }
 
 .device_inner {
@@ -487,35 +508,35 @@ img {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  // flex-wrap: wrap;
   margin-right: -5px;
   margin-left: -5px;
 }
 
-div.field, div.actions {
+div {
+  &.field, 
+  &.actions {
   margin-bottom: 10px;
+  }
 }
 
-.col-2 {
-  -ms-flex: 0 0 16.666667%;
-  flex: 0 0 16.666667%;
-  max-width: 16.666667%;
-}
-
-.pt-2, .py-2 {
+.pt-2, 
+.py-2 {
   padding-top: 0.5rem!important;
 }
 
-.form-row>.col, .form-row>[class*=col-] {
+.form-row>.col, 
+.form-row>[class*=col-] {
   padding-right: 5px;
   padding-left: 5px;
 }
 
-.pr-2, .px-2 {
+.pr-2, 
+.px-2 {
   padding-right: 0.5rem!important;
 }
 
-.pl-2, .px-2 {
+.pl-2, 
+.px-2 {
   padding-left: 0.5rem!important;
 }
 
@@ -529,15 +550,81 @@ div.field, div.actions {
   margin: 0 5px;
 }
 
-// アカウント画面
-.user {
-  width: 100%;
+.required-a::after {
+  content: "必須";
+  color: #fff;
+  background-color: #ff0000a8;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 0 5px;
 }
 
-.user .user-nav {
+.col-2 {
+  -ms-flex: 0 0 16.666667%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+// ユーザー関連------------------------------------------------------------------------------------------------------------------------------------
+
+.user {
   width: 100%;
-  box-sizing: border-box;
-  padding: 30px 15px;
+  .user-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    li {
+      font-size: 18px;
+      padding: 10px;
+    }
+    a {
+      color: #000;
+    }
+  }
+  .user-nav-pc {
+    height: 100vh;
+    .active {
+      border-right: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+  }
+  .user-nav-mobile {
+    height: auto;
+    li {
+      float: left;
+    }
+    .active {
+      border-bottom: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+  }
+  .user-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+  }
+  .user-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 30px auto;
+  }
+  .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+    label {
+      font-weight: bold;
+    }
+  }
+  .icon-box {
+    text-align: center;
+  }
 }
 
 .user-nav > ul {
@@ -545,64 +632,9 @@ div.field, div.actions {
   padding-left: 40px;
 }
 
-.user .user-nav-pc {
-  height: 100vh;
-}
-
-.user .user-nav-mobile {
-  height: auto;
-}
-
-.user .user-nav li {
-  font-size: 18px;
-  padding: 10px;
-}
-
-.user .user-nav-pc .active {
-  border-right: 3px solid #4a90e2;
-}
-
-.user .user-nav-pc .active a {
-  color: #4a90e2;
-}
-
-.user .user-view {
-  background-color: #F6F8F9;
-  border-left: 2px solid #e2e2e2;
-}
-
-.user .user-view-box {
-  max-width: 880px;
-  background-color: #fff;
-  border: 1px solid #eaedef;
-  margin: 30px auto;
-}
-
-.user .update-content {
-  border-bottom: 1px solid #eaedef;
-  padding: 20px;
-  margin: 0 15px;
-  font-size: 16px;
-}
-
-.h5, h5 {
-  font-size: 1.25rem;
-}
-
-.user .update-content label {
-  font-weight: bold;
-}
-
-.h2, h2 {
-  font-size: 2rem;
-}
-
-.mb-3, .my-3 {
+.mb-3, 
+.my-3 {
   margin-bottom: 1rem!important;
-}
-
-div.field, div.actions {
-  margin-bottom: 10px;
 }
 
 .form-group {
@@ -614,10 +646,6 @@ div.field, div.actions {
   border-color: #6c757d;
 }
 
-.user .icon-box {
-  text-align: center;
-}
-
 .host-icon {
   width: 65px;
   height: 65px;
@@ -625,68 +653,75 @@ div.field, div.actions {
   border-radius: 50px;
 }
 
-.required-a::after {
-  content: "必須";
-  color: #fff;
-  background-color: #ff0000a8;
-  font-size: 12px;
-  border-radius: 5px;
-  padding: 4px;
-  margin: 0 5px;
+// ルーム関連 ------------------------------------------------------------------------------------------------------------------------------------
+
+.room {
+  width: 100%;
+  padding: 30px 60px;
 }
 
-@media (min-width: 992px){
-  .col-lg-2 {
-    -ms-flex: 0 0 16.666667%;
-    flex: 0 0 16.666667%;
-    max-width: 16.666667%;
+.room-new {
+  width: 100%;
+  .room-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    & > ul {
+      margin-bottom: 16px;
+      padding-left: 40px;
+    }
+    li {
+      font-size: 18px;
+      padding: 10px;
+    }
   }
-  .d-lg-block {
-    display: block!important;
+  .room-nav-pc {
+    height: 100vh;
+  }
+  .room-nav-pc .active {
+    border-right: 3px solid #4a90e2;
+    a {
+      color: #4a90e2;
+    }
+  }
+  .room-nav-mobile {
+    height: auto;
+    li {
+      float: left;
+    }
+    .active {
+      border-bottom: 3px solid #4a90e2;
+    }
+    a {
+      color: #4a90e2;
+    }
+  }
+  .room-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+  }
+  .room-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 50px auto;
+  }
+  .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
   }
 }
 
-@media screen and (min-width: 768px){
-  .col-md-2 {
-    -ms-flex: 0 0 16.666667%;
-    flex: 0 0 16.666667%;
-    max-width: 16.666667%;
-  }
-  .col-md-3 {
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-  .col-md-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-  .col-md-9 {
-    -ms-flex: 0 0 75%;
-    flex: 0 0 75%;
-    max-width: 75%;
-  }
-  .col-md-10 {
-    -ms-flex: 0 0 83.333333%;
-    flex: 0 0 83.333333%;
-    max-width: 83.333333%;
-  }
-  .offset-md-3 {
-    margin-left: 25%;
-  }
+.d-none {
+  display: none!important;
 }
 
-// 登録ルーム一覧
 .room-posts, 
 .reservations {
   max-width: 100vw;
   padding: 30px 60px;
-}
-
-.h4,
-h4 {
-  font-size: 1.5rem;
 }
 
 .pb-4, 
@@ -695,8 +730,20 @@ h4 {
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse:collapse;
+  border-spacing:0;
 }
+
+th {
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+td {
+  padding: 0 5px 7px;
+}
+
+// 予約関連 ----------------------------------------------------------------------------------------------------------------------------------------
 
 .room-posts table, 
 .reservations table {
@@ -714,11 +761,6 @@ table {
   border-bottom: 1px solid #eaedef;
 }
 
-th {
-  padding-bottom: 5px;
-  text-align: center;
-}
-
 .room-posts table thead th, 
 .reservations table thead th {
   padding: 8px 15px;
@@ -726,19 +768,14 @@ th {
   letter-spacing: 1px;
 }
 
-td {
-  padding: 0 5px 7px;
-}
-
 .room-posts table tbody td, 
 .reservations table tbody td {
-  padding: 10px 30px;
+  padding: 10px 20px;
 }
 
 .room-posts table tbody a, 
 .reservations table tbody a {
   color: #4a90e2;
-  text-decoration: underline;
 }
 
 .room-posts-image, 
@@ -748,56 +785,21 @@ td {
   object-fit: cover;
 }
 
-.room-posts table tbody .posts-name, .reservations table tbody .posts-name {
+.room-posts table tbody .posts-name,
+.reservations table tbody .posts-name {
   font-size: 18px;
   font-weight: bold;
   color: #909090;
 }
 
-.room-posts table tbody .posts-content, .reservations table tbody .posts-content {
+.room-posts table tbody .posts-content, 
+.reservations table tbody .posts-content {
   max-width: 400px;
 }
 
 .price-icon::before {
   content: "¥";
   padding-right: 3px;
-}
-
-// ルーム詳細
-@media (min-width: 576px){
-  .container {
-      max-width: 540px;
-  }
-}
-
-@media (min-width: 768px){
-  .container {
-      max-width: 720px;
-  }
-}
-
-@media (min-width: 992px){
-  .container {
-      max-width: 960px;
-  }
-}
-
-.room-show, 
-.reservations-new {
-  padding: 30px 0;
-}
-
-@media (min-width: 768px){
-  .col-md-8 {
-    -ms-flex: 0 0 66.666667%;
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-  }
-  .col-md-4 {
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
 }
 
 .room-show-image, 
@@ -844,26 +846,12 @@ td {
   font-size: 14px;
 }
 
-@media (min-width: 768px){
-  .col-md-4 {
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
-}
-
-.room-show-nav, .reservations-new-nav {
+.room-show-nav, 
+.reservations-new-nav {
   padding: 20px;
   border: 1px solid #eaedef;
 }
 
-@media screen and (min-width: 1200px){
-  .container {
-    max-width: 1140px;
-  }
-}
-
-// 予約内容確認画面
 .room-show, 
 .reservations-new {
   padding: 30px 0;
@@ -901,34 +889,6 @@ td {
   margin-bottom: 1.5rem!important;
 }
 
-.h6, 
-h6 {
-  font-size: 1rem;
-}
-
-// 予約完了画面
-@media (min-width: 768px){
-  .col-md-12 {
-      -ms-flex: 0 0 100%;
-      flex: 0 0 100%;
-      max-width: 100%;
-  }
-}
-
-// 検索結果一覧画面
-.room {
-  width: 100%;
-  padding: 30px 60px;
-}
-
-@media (min-width: 1200px){
-  .col-xl-3 {
-      -ms-flex: 0 0 25%;
-      flex: 0 0 25%;
-      max-width: 25%;
-  }
-}
-
 .room-frame-inner {
   border: 1px
   solid #e2e2e2;
@@ -953,10 +913,9 @@ h6 {
 .room-profile {
   width: 100%;
   padding: 15px;
-}
-
-.room-profile p {
-  word-break: break-all;
+  p {
+    word-break: break-all;
+  }
 }
 
 .room-profile-name {
@@ -976,3 +935,228 @@ h6 {
   letter-spacing: 1px;
 }
 
+// バリデーション関連-------------------------------------------------------------------------------------------------------------------------
+
+.field_with_errors {
+  width: 100%;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  color: rgb(255, 0, 0);
+  h2 {
+  font-size: 12px;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+// レスポンシブ関連 -------------------------------------------------------------------------------------------------------------------------
+
+@media screen and (min-width: 576px){
+  .container {
+      max-width: 540px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .container {
+    max-width: 720px;
+  }
+  .col-md-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-md-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-md-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+  .col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .offset-md-3 {
+    margin-left: 25%;
+  }
+  .col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .container {
+    max-width: 960px;
+  }
+  .d-lg-inline-block {
+    display: inline-block!important;
+  }
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-lg-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-lg-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .d-lg-block {
+    display: block!important;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+  }
+  .col-xl-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .header-sharch {
+    background-color: red;
+  }
+}
+
+@media screen and (min-width: 576px){
+  .container {
+      max-width: 540px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .container {
+    max-width: 720px;
+  }
+  .col-md-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-md-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-md-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+  .col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .offset-md-3 {
+    margin-left: 25%;
+  }
+  .col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .container {
+    max-width: 960px;
+  }
+  .d-lg-inline-block {
+    display: inline-block!important;
+  }
+  .col-lg-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-lg-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-lg-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .d-lg-block {
+    display: block!important;
+  }
+  .d-lg-none {
+    display: none!important;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+  }
+  .col-xl-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}

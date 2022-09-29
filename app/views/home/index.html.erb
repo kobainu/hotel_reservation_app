@@ -8,7 +8,7 @@
 
             <%= search_form_for @q, url: search_rooms_path do |f| %>
               <%= f.label :address_cont, 'エリア' %>
-              <%= f.text_field :address_cont, id: "area", class: "form-control mb-4", placeholder: "東京" %>
+              <%= f.search_field :address_matches, id: "area", class: "form-control mb-4", placeholder: "東京" %>
               <br>
               <%= f.submit '探す', class: "form-control btn-primary mb-4" %>
             <% end %>
@@ -33,7 +33,7 @@
         </div>
         <div class="panel-item col-lg-3 col-6">
           <span>京都</span>
-          <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg", class: "panel-image"), search_rooms_path(q: {address_cont: "京都"}) %>
+          <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg", class: "panel-image"), search_rooms_path(q: {address_cont: "京都府"}) %>
         </div>
         <div class="panel-item col-lg-3 col-6">
           <span>札幌</span>
@@ -42,4 +42,5 @@
       </div>
     </div>
   </div>
+  
 </div>
