@@ -5,12 +5,102 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <div class="header-inner">
+
+        <div class="header-left-nav">
+          <a href="/"><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトロゴ"></a>
+          <div class="header-sharch d-lg-inline-block d-none">
+
+            <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.search_field :address_cont, id: "search_area", class: "form-control", placeholder: "エリア" %>
+            <% f.submit '探す', class: "form-control btn-primary mb-4" %>
+            <% end %>
+            <i class="fa-solid fa-location-dot fa-lg"></i>
+
+          </div>
+          <div class="header-sharch d-lg-inline-block d-none">
+            
+            <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.search_field :name_or_address_or_introduction_cont, id: "search_area", class: "form-control", placeholder: "キーワード" %>
+            <% f.submit '探す', class: "form-control btn-primary mb-4" %>
+            <% end %>
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+
+          </div>
+        </div>
+
+        <div class="header-right-nav">
+          <div class="nav-item ">
+
+            <% if user_signed_in? %>
+            <div class="nav-item d-sm-inline-block"><%= current_user.name %></div>
+            <div class="nav-item">
+              <% if current_user.image.blank? %>
+                <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt='メニュー' class="mx-3 p-1 host-icon nav-trigger">
+              <% else %>
+                <%= image_tag current_user.image.url, alt: "メニュー", class: "mx-3 p-1 host-icon nav-trigger" %>
+              <% end %>  
+
+              <ul class="header-nav-menu">
+                <li>
+                  <%= link_to "ルーム登録", new_room_path %>
+                </li>
+                <li>
+                  <%= link_to "予約済みルーム一覧", reservations_path %>
+                </li>
+                <li>
+                  <%= link_to "登録済みルーム一覧", rooms_posts_path %>
+                </li>
+                <li>
+                  <%= link_to "ユーザー設定", users_account_path %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+              <script>
+                'use strict';
+                {
+                  document.querySelector('.nav-trigger').addEventListener('click', ()=> {
+                    document.querySelector('.header-nav-menu').classList.toggle('on');
+                  });
+                }
+              </script>
+            </div>
+            <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary my-2 mx-3" %>
+            <%= link_to "登録する", new_user_registration_path, class: "btn btn-secondary" %>
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="notifications">
+      <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notifications">
+      <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
+
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>
